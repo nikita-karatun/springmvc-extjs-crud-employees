@@ -28,7 +28,7 @@ Table can be filled with data by invoking ru.testtask.main.App.main() method (op
 Interface for handle database queries.
 ru.testtask.dao.EmployeeDao
 There are two implementations of the interface:
-ru.testtask.dao.HibernateEmployeeDao - connect and work with mysql with hibernate;
+ru.testtask.dao.HibernateEmployeeDao - connect and work with mysql and hibernate;
 ru.testtask.dao.MockEmployeeDao - mock class which imitates database queries.
 
 ru.testtask.dao.HibernateEmployeeDao is used by delaults. In order to use mock class instead of ru.testtask.dao.HibernateEmployeeDao one should comment @Repository and uncomment it in ru.testtask.dao.MockEmployeeDao.
