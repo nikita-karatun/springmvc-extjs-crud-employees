@@ -1,8 +1,0 @@
-/home/nikita/java_console_workspace/SpringMVC-ExtJS-CRUD-employees/src/main/java/ru/testtask/main/App.java
-/home/nikita/java_console_workspace/SpringMVC-ExtJS-CRUD-employees/src/main/java/ru/testtask/bootstrap/MyWebMvcConfigurer.java
-/home/nikita/java_console_workspace/SpringMVC-ExtJS-CRUD-employees/src/main/java/ru/testtask/dao/HibernateEmployeeDao.java
-/home/nikita/java_console_workspace/SpringMVC-ExtJS-CRUD-employees/src/main/java/ru/testtask/controller/EmployeeController.java
-/home/nikita/java_console_workspace/SpringMVC-ExtJS-CRUD-employees/src/main/java/ru/testtask/utils/StringUtils.java
-/home/nikita/java_console_workspace/SpringMVC-ExtJS-CRUD-employees/src/main/java/ru/testtask/vo/Employee.java
-/home/nikita/java_console_workspace/SpringMVC-ExtJS-CRUD-employees/src/main/java/ru/testtask/dao/MockEmployeeDao.java
-/home/nikita/java_console_workspace/SpringMVC-ExtJS-CRUD-employees/src/main/java/ru/testtask/dao/EmployeeDao.java
