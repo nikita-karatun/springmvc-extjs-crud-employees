@@ -34,6 +34,15 @@ There are two implementations of the interface:
 
 ru.testtask.dao.HibernateEmployeeDao is used by delaults. In order to use mock class instead of ru.testtask.dao.HibernateEmployeeDao one should comment @Repository and uncomment it in ru.testtask.dao.MockEmployeeDao.
 
+Install and deploy application on running tomcat server:
+```
+mvn tomcat7:redeploy
+```
+
+Application main page url:
+```
+http://localhost:8080/SpringMVC-ExtJS-CRUD/
+```
 --------------
 ### RUSSIAN
 Приложение реализовано в Eclipse IDE, в качетсве контейнера используется Tomcat 7, база данных - mysql.
@@ -67,3 +76,13 @@ CREATE TABLE `EMPLOYEE` (
 * ru.testtask.dao.MockEmployeeDao - мок-класс имитирующий работу с базой данных.
 
 По умолчанию в качестве источника данных подключен ru.testtask.dao.HibernateEmployeeDao. Чтобы вместо него включить тестовый источник, нужно в ru.testtask.dao.HibernateEmployeeDao закоментировать строку @Repository и в ru.testtask.dao.MockEmployeeDao ее раскоментировать.
+
+Установить приложение на запущенный сервер tomcat 7:
+```
+mvn tomcat7:redeploy
+```
+
+Ссылка на главную страницу приложения:
+```
+http://localhost:8080/SpringMVC-ExtJS-CRUD/
+```
