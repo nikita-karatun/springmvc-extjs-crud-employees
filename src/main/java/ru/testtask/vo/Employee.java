@@ -150,7 +150,7 @@ public class Employee
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (!(obj instanceof Employee))
 			return false;
 		Employee other = (Employee) obj;
 		if (age != other.age)
