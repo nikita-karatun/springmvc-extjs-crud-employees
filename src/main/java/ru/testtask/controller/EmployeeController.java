@@ -4,10 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +22,7 @@ import ru.testtask.vo.Employee;
 @RequestMapping("api")
 public class EmployeeController
 {
+	private Logger logger = Logger.getLogger(getClass());
 	EmployeeDao employeeDao;
 
 	@Autowired
@@ -56,15 +56,17 @@ public class EmployeeController
 
 	@RequestMapping(value = "employee/loadEmployeesWithFilter")
 	@ResponseBody
-	public Map<String, List<Employee>> loadEmployeesWithFilter(@RequestParam("employee") String[] employeeStringArray)
+	public Map<String, List<Employee>> loadEmployeesWithFilter(
+			@RequestParam("employee") String[] employeeStringArray)
 	{
 		/*
-		 * по какой то причине ExtJs отправляет этот запрос в ISO-8859-1, не получилось исправть это на клиентской
-		 * стороне, поэтому произвожу перекодировку тут
-		 */	
+		 * по какой то причине ExtJs отправляет этот запрос в ISO-8859-1, не
+		 * получилось исправть это на клиентской стороне, поэтому произвожу
+		 * перекодировку тут
+		 */
 		employeeStringArray = StringUtils.correctEncoding(employeeStringArray);
 		Employee employee = Employee.composeFromStringArray(employeeStringArray);
-		
+
 		Map<String, List<Employee>> employees = new HashMap<String, List<Employee>>();
 		employees.put("employees", employeeDao.getEmployeesList(employee));
 		return employees;
@@ -85,9 +87,9 @@ public class EmployeeController
 		return true;
 	}
 
-	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public List<ObjectError> handleMethodArgumentNotValidException(MethodArgumentNotValidException error)
+	@ExceptionHandler(Exception.class)
+	public void handleException(Exception ex)
 	{
-		return error.getBindingResult().getAllErrors();
+		logger.error(null, ex);
 	}
 }

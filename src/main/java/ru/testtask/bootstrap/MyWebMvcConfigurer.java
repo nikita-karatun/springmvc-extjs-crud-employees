@@ -1,6 +1,7 @@
 package ru.testtask.bootstrap;
 
-import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +15,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = {"ru.testtask"})
 public class MyWebMvcConfigurer extends WebMvcConfigurerAdapter {
-		
+	
 	@Override  
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {  
-		BasicConfigurator.configure();
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**")
 			.addResourceLocations("/resources/");  
     }
