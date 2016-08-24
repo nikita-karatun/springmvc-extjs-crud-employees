@@ -1,0 +1,35 @@
+apply plugin: 'war'
+
+compileJava.options.encoding = 'UTF-8'
+
+ext {
+    SPRING_VERSION = '3.2.4.RELEASE'
+    JACKSON_VERSION = '2.4.2'
+    HIBERNATE_VERSION = '4.3.6.Final'
+    LOG4J_VERSION = '1.2.17'
+    MYSQL_VERSION = '5.1.6'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework:spring-core:$SPRING_VERSION"
+    compile "org.springframework:spring-web:$SPRING_VERSION"
+    compile "org.springframework:spring-webmvc:$SPRING_VERSION"
+
+    compile "com.fasterxml.jackson.core:jackson-core:$JACKSON_VERSION"
+    compile "com.fasterxml.jackson.core:jackson-annotations:$JACKSON_VERSION"
+    compile "com.fasterxml.jackson.core:jackson-databind:$JACKSON_VERSION"
+
+    compile "mysql:mysql-connector-java:$MYSQL_VERSION"
+
+    compile "log4j:log4j:$LOG4J_VERSION"
+
+    compile "org.hibernate:hibernate-core:$HIBERNATE_VERSION"
+    compile "org.hibernate:hibernate-entitymanager:$HIBERNATE_VERSION"
+
+}
+
+
