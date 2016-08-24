@@ -36,7 +36,7 @@ Ext.onReady(function()
 	
 	var employeeStoreProxy = {
 			type : 'ajax',
-			url : '/SpringMVC-ExtJS-CRUD/api/employee/loadEmployees',
+			url : '/employees/api/employee/loadEmployees', /* todo context root hardcoded */
 			reader :
 			{
 				type : 'json',
@@ -75,7 +75,7 @@ Ext.onReady(function()
 				var employee = rs[0].getData();
 				Ext.Ajax.request(
 				{
-					url : '/SpringMVC-ExtJS-CRUD/api/employee/delete',
+					url : '/employees/api/employee/delete',
 					method : 'POST',
 					jsonData : employee,
 					success : function(response)
@@ -271,7 +271,7 @@ Ext.onReady(function()
 		var cProxy =
 		{
 			type : 'ajax',
-			url : '/SpringMVC-ExtJS-CRUD/api/employee/loadEmployeesWithFilter',
+			url : '/employees/api/employee/loadEmployeesWithFilter',
 			extraParams :
 			{
 				employee : filter
@@ -365,10 +365,10 @@ Ext.onReady(function()
 					var url = '';
 					if (action == 'edit')
 					{
-						url = '/SpringMVC-ExtJS-CRUD/api/employee/updateEmployee';
+						url = '/employees/api/employee/updateEmployee';
 					} else
 					{
-						url = '/SpringMVC-ExtJS-CRUD/api/employee/save';
+						url = '/employees/api/employee/save';
 					}
 					console.log(values.id == '');
 					var employee = values;
