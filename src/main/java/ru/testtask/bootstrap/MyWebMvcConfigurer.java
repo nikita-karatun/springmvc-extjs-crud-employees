@@ -16,7 +16,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"ru.testtask"})
+@ComponentScan(basePackages = "ru.testtask")
 @Import(PersistenceJPAConfig.class)
 public class MyWebMvcConfigurer extends WebMvcConfigurerAdapter {
 
