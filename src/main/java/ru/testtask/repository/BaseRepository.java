@@ -2,7 +2,6 @@ package ru.testtask.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
-import ru.testtask.vo.Employee;
 
 import java.io.Serializable;
 import java.util.List;

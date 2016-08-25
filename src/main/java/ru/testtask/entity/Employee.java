@@ -1,4 +1,4 @@
-package ru.testtask.vo;
+package ru.testtask.entity;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 

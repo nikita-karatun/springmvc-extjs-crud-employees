@@ -1,6 +1,6 @@
 package ru.testtask.repository;
 
-import ru.testtask.vo.Employee;
+import ru.testtask.entity.Employee;
 
 import java.util.List;
 

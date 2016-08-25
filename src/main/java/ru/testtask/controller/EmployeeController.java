@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import ru.testtask.model.EmployeesResponse;
 import ru.testtask.repository.EmployeeRepository;
-import ru.testtask.vo.Employee;
+import ru.testtask.entity.Employee;
 
 @Controller
 @RequestMapping("api")

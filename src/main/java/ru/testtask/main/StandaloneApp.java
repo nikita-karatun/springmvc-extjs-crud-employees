@@ -1,8 +1,5 @@
 package ru.testtask.main;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -12,7 +9,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 import ru.testtask.bootstrap.PersistenceJPAConfig;
 import ru.testtask.repository.EmployeeRepository;
-import ru.testtask.vo.Employee;
+import ru.testtask.entity.Employee;
 
 @Component
 public class StandaloneApp {
