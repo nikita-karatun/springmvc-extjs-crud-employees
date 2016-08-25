@@ -6,13 +6,9 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import ru.testtask.dao.EmployeeDao;
 import ru.testtask.model.EmployeesResponse;
@@ -24,12 +20,9 @@ import ru.testtask.vo.Employee;
 @RequestMapping("api")
 public class EmployeeController {
     private Logger logger = Logger.getLogger(getClass());
-    EmployeeDao employeeDao;
 
     @Autowired
-    public EmployeeController(EmployeeDao employeeDao) {
-        this.employeeDao = employeeDao;
-    }
+    private EmployeeRepository employeeRepository;
 
     @RequestMapping(value = "/index")
     public String index() {
@@ -37,52 +30,36 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "employee/save", method = RequestMethod.POST)
-    @ResponseBody
-    public boolean saveEmployee(@RequestBody Employee employee) {
-        System.out.println(employee);
-        return employeeDao.addEmployee(employee);
+    @ResponseStatus(value = HttpStatus.OK)
+    public void saveEmployee(@RequestBody Employee employee) {
+        employeeRepository.save(employee);
     }
-
-    @Autowired
-    private EmployeeRepository employeeRepository;
 
     @RequestMapping(value = "employee/loadEmployees")
     @ResponseBody
     public EmployeesResponse loadAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
-        EmployeesResponse employeesResponse = new EmployeesResponse();
-        employeesResponse.setEmployees(employees);
-        return employeesResponse;
+        return new EmployeesResponse(employees);
     }
 
     @RequestMapping(value = "employee/loadEmployeesWithFilter")
     @ResponseBody
-    public Map<String, List<Employee>> loadEmployeesWithFilter(
-            @RequestParam("employee") String[] employeeStringArray) {
-        /*
-		 * по какой то причине ExtJs отправляет этот запрос в ISO-8859-1, не
-		 * получилось исправть это на клиентской стороне, поэтому произвожу
-		 * перекодировку тут
-		 */
-        employeeStringArray = StringUtils.correctEncoding(employeeStringArray);
+    public EmployeesResponse loadEmployeesWithFilter(@RequestParam("employee") String[] employeeStringArray) {
         Employee employee = Employee.composeFromStringArray(employeeStringArray);
-
-        Map<String, List<Employee>> employees = new HashMap<String, List<Employee>>();
-        employees.put("employees", employeeDao.getEmployeesList(employee));
-        return employees;
+        List<Employee> employees = employeeRepository.findAll(employee);
+        return new EmployeesResponse(employees);
     }
 
     @RequestMapping(value = "employee/delete", method = RequestMethod.POST)
-    @ResponseBody
-    public boolean deleteEmployee(@RequestBody Employee employee) {
-        return employeeDao.removeEmployee(employee);
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deleteEmployee(@RequestBody Employee employee) {
+        employeeRepository.delete(employee);
     }
 
     @RequestMapping(value = "employee/updateEmployee", method = RequestMethod.POST)
-    @ResponseBody
-    public boolean updateEmployees(@RequestBody Employee employee) {
-        employeeDao.updateEmployee(employee);
-        return true;
+    @ResponseStatus(value = HttpStatus.OK)
+    public void updateEmployees(@RequestBody Employee employee) {
+        employeeRepository.save(employee);
     }
 
     @ExceptionHandler(Exception.class)

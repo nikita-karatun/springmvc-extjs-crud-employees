@@ -6,7 +6,14 @@ import java.util.List;
 
 public class EmployeesResponse {
 
-    List<Employee> employees;
+    private List<Employee> employees;
+
+    public EmployeesResponse() {
+    }
+
+    public EmployeesResponse(List<Employee> employees) {
+        this.employees = employees;
+    }
 
     public List<Employee> getEmployees() {
         return employees;
