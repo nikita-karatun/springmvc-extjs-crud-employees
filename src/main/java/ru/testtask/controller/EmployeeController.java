@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ru.testtask.dao.EmployeeDao;
+import ru.testtask.model.EmployeesResponse;
 import ru.testtask.repository.EmployeeRepository;
 import ru.testtask.utils.StringUtils;
 import ru.testtask.vo.Employee;
@@ -47,11 +48,11 @@ public class EmployeeController {
 
     @RequestMapping(value = "employee/loadEmployees")
     @ResponseBody
-    public Map<String, List<Employee>> loadAllEmployees() {
-        Map<String, List<Employee>> employees = new HashMap<String, List<Employee>>();
-        List<Employee> employees1 = employeeRepository.findAll();
-        employees.put("employees", employees1);
-        return employees;
+    public EmployeesResponse loadAllEmployees() {
+        List<Employee> employees = employeeRepository.findAll();
+        EmployeesResponse employeesResponse = new EmployeesResponse();
+        employeesResponse.setEmployees(employees);
+        return employeesResponse;
     }
 
     @RequestMapping(value = "employee/loadEmployeesWithFilter")
