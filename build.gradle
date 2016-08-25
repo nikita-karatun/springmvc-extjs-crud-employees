@@ -8,6 +8,7 @@ targetCompatibility = 1.8
 
 ext {
     SPRING_VERSION = '4.3.2.RELEASE'
+    SPRING_JPA_VERSION = '2.0.8'
     JACKSON_VERSION = '2.4.2'
     HIBERNATE_VERSION = '4.3.6.Final'
     LOG4J_VERSION = '1.2.17'
@@ -22,6 +23,10 @@ dependencies {
     compile "org.springframework:spring-core:$SPRING_VERSION"
     compile "org.springframework:spring-web:$SPRING_VERSION"
     compile "org.springframework:spring-webmvc:$SPRING_VERSION"
+    compile "org.springframework:spring-tx:$SPRING_VERSION"
+    compile "org.springframework:spring-orm:$SPRING_VERSION"
+
+    compile "org.springframework:spring-jpa:$SPRING_JPA_VERSION"
 
     compile "com.fasterxml.jackson.core:jackson-core:$JACKSON_VERSION"
     compile "com.fasterxml.jackson.core:jackson-annotations:$JACKSON_VERSION"
